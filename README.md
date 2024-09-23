@@ -8,8 +8,15 @@
 - [Set up Google Analytics](https://www.youtube.com/watch?v=mXcQ7rVn3ro)
 - [Google Tag Manager](https://www.youtube.com/watch?v=WACCJaKPeGk)
 
+## Technologies Used
+- HTML
+- CSS
+- Java Script
+- Bootstrap
+- Three.js
+
+
 ## License
 
 © Mubtasim Ahmed Rakheen
-
 Licensed under the [Apache License](LICENSE).
