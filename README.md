@@ -1,7 +1,7 @@
 # my-portfolio-website
 ------------------------
 ## Hosted with Github Pages:  
-[https://mrakheen.github.io/my-portfolio-website/](https://mrakheen.github.io/mubtasim-ahmed-rakheen-portfolio/)
+https://mrakheen.github.io/mubtasim-ahmed-rakheen-portfolio/
 
 ## Useful Links
 - [Set up git pages with custom domain](https://medium.com/@kimcodes/setting-up-a-web-page-with-github-pages-f77d45573ab2)
