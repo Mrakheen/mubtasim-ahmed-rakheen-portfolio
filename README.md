@@ -16,6 +16,9 @@ https://mrakheen.github.io/mubtasim-ahmed-rakheen-portfolio/
 - Bootstrap
 - Three.js
 
+## Aknowledgements
+- Yasin Ehsan Portfolio Repo: https://github.com/YasinEhsan/YasinEhsan.github.io
+- Dan Greenheck Portfolio Repo: https://github.com/dgreenheck/threejs-avatar-portfolio 
 
 ## License
 
