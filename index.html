@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="">
+	<meta name="author" content="">
+  
+	<title>Mubtasim Ahmed Rakheen</title>
+  
+	<!-- CSS -->
+	<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" media="screen">
+	<link href="assets/css/simple-line-icons.css" rel="stylesheet" media="screen">
+	<link href="assets/css/animate.css" rel="stylesheet">
+  
+	<!-- Custom styles CSS -->
+	<link rel="stylesheet" media="screen" href="style.css">
+  
+	<!-- google text fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:200" rel="stylesheet">
+	<script src="assets/js/modernizr.custom.js"></script>
+  
+  
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	
+	<script type="importmap">
+	  {
+		"imports": {
+		  "three": "https://unpkg.com/three@v0.158.0/build/three.module.js",
+		  "three/addons/": "https://unpkg.com/three@v0.158.0/examples/jsm/"
+		}
+	  }
+	</script>
+  
+	<script type="module" src="assets/js/avatar.js"></script>
+	<script type="module" src="assets/js/stars.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/maath-random@1.0.1/dist/maath-random.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.js"></script>
+  
+</head>
+
+<body data-spy="scroll" data-target=".navbar-custom" data-offset="70">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSHPF8D"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<!-- Home start -->
+	<section id="home">
+		<div id="particles-js"></div> <!-- Particles layer -->
+
+		<div class="home-main">
+			<div class="text-container">
+				<h1>Hi 👋, I'm </h1> 
+				<h1 class="hero-title">Mubtasim Ahmed Rakheen</h1>
+				<h2>I'm a <span id="role" class='gradient-text'></span><span id="cursor" class='gradient-text'>|</span></h2>
+				<h3 id="quote">
+					<i>" Bridging the gap between creativity and technology is what fuels my passion "</i>
+				</h3>
+				<div class="text-center my-4">
+					<p><b>Connect with me</b></p>
+					<span id="social">
+					  <a class="fab fa-github mx-2" href="https://github.com/Mrakheen" target="_blank" rel="noopener noreferrer"> </a>
+					  <a class="fab fa-linkedin mx-2" href="https://www.linkedin.com/in/mubtasim-ahmed-rakheen-8077a4203/" target="_blank" rel="noopener noreferrer"> </a>
+					  <a class="fa fa-envelope mx-2" 
+					  href="mailto:mrakheen10@gmail.com" 
+					  onclick="setTimeout(function() { alert('My Email:  mrakheen10@gmail.com'); }, 100);"  
+					  rel="noopener noreferrer"></a>			
+					</span>
+				</div>
+			</div>
+			<div id="avatar-container">
+				<div id="avatar-loading"></div>
+				<div class="tooltip">
+					<i class="fa fa-mouse-pointer"></i>   hover or click my avatar!
+				</div>
+			</div>
+		</div>
+		<a href="#about">
+			<div class="scroll-down">
+				<span><i class="fa fa-angle-down fa-2x"></i></span>
+			</div>
+		</a>
+	</section>
+	<!-- Home end -->
+
+
+	<!-- Navigation start -->
+	<header class="header">
+
+		<nav class="navbar navbar-custom" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#" onclick="window.location.href='/'">Mubtasim Ahmed Rakheen</a>
+
+					<!--<a class="navbar-brand" href="#" onclick="window.location.href='/subdirectory/'">Mubtasim Ahmed Rakheen</a> 
+					If your site is hosted in a subdirectory, you may need to adjust the path accordingly:--->
+
+				</div>
+
+				<div class="collapse navbar-collapse" id="custom-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#about"><i class="fa fa-user"></i> About</a></li>
+						<li><a href="#projects"><i class="fa fa-folder"></i> Projects</a></li>
+						<!-- <li><a href="#skills">Speaking</a></li> -->
+						<li><a href="#articles"><i class="fa fa-pen"></i> Writing</a></li>
+						<li><a href="https://www.linkedin.com/in/mubtasim-ahmed-rakheen-8077a4203" class="github-button fab fa-linkedin"> LINKEDIN</a></li>
+					</ul>
+				</div>
+
+			</div><!-- .container -->
+
+		</nav>
+
+	</header>
+	<!-- Navigation end -->
+
+
+	<!-- about start -->
+	<section id="about" class="darkTheme">
+		<div class="container">
+			<div class="row" style="display: flex; align-items: center; justify-content: center;">
+				<div class="col-sm-6">
+					<div class="pfblock-header wow fadeInUp">
+						<div id="biodiv" class="row justify-content-center">
+							<div class="col-md-8">
+								<h2 class="pfblock-title myProjects text-center">🙎🏼‍♂️ About</h2>
+								<div class="pfblock-line mb-3"></div>
+								<p class="text-center">🎓 The University of Texas at Arlington</p>
+								<p class="text-center">💻 Computer Science & 🔢 Mathematics </p>
+								<p class="text-center">📚 Casual Curious Reader</p>
+								<p class="text-center">👨‍💻 Passionate about Open-Source projects</p>
+								<p class="text-center">🏋🏼‍♂️ Workout enthusiast</p>
+								<p></p>
+								<a href="Mubtasim-Ahmed-Rakheen-Resume.pdf" class="custom-button">
+									<i class="fas fa-file-alt"></i> <span> Download Resume</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="profile-picture-container">
+					<img id="profile-picture" src="assets/img/profile.jpg" alt="Profile Picture" class="profile-picture">
+				</div>
+			</div><!-- .row -->
+
+			<div><p></p></div>
+
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="iconbox1 wow zoomIn">
+						<div class="iconbox-icon">
+							<span class="icon-bulb"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">Creating</h3>
+							<div class="iconbox-desc">
+								I explore various technologies and enjoy developing innovative solutions that push the boundaries of what’s possible.
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="iconbox2 wow zoomIn">
+						<div class="iconbox-icon">
+							<span class="icon-puzzle"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">Challenges</h3>
+							<div class="iconbox-desc">
+								I thrive in dynamic environments, constantly seeking opportunities to solve complex problems while learning new skills along the way.
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="iconbox3  wow zoomIn">
+						<div class="iconbox-icon">
+							<span class="icon-user"></span>
+						</div>
+						<div class="iconbox-text">
+							<h3 class="iconbox-title">Community</h3>
+							<div class="iconbox-desc">
+								Collaborating with peers helps me grow. I value the power of shared knowledge and contribute to building a strong, supportive tech community.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</section>
+	<!-- about end -->
+
+	<!-- projects start -->
+	<section id="projects" class="darkTheme">
+		<div class="container">
+			<div class="row">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="header-content">
+						<h2 class="pfblock-title myProjects">📂 Projects</h2>
+					</div>
+					<div class="pfblock-line"></div>
+					<div class="pfblock-subtitle">
+						<b>🚀 I like to pursue ideas based on frequent challenges faced by me and my peers</b>
+						<p></p>
+					</div>
+					<div class="view-more-btn">
+						<a href="https://github.com/Mrakheen?tab=repositories" class="custom-button">
+							<i class="fab fa-github"></i> <span>View Repositories</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="grid wow zoomIn">
+							<figure class="effect-bubba">
+								<img src="assets/img/FAL.jpg">
+								<figcaption>
+									<h2><span>Space Invaders - HackUTA</span></h2>
+									<p><i>An android game with a theme similar to the popular 1978s arcade video game Space Invaders</i>
+										<a href="https://github.com/Mrakheen/FAST-AS-LIGHT--Android-Mobile-Game" class="custom-button">
+											<i class="fab fa-github"></i> <span>Code</span>
+										</a>
+									</p>
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="grid wow zoomIn">
+							<figure class="effect-bubba">
+								<img src="assets/img/ReadOdyssey.jpg">
+								<figcaption>
+									<h2><span>Read Odyssey</span></h2>
+									<p><i>Reddit like Webapp Forum but for Travelling with user friendly features</i>
+										<a href="https://github.com/Mrakheen/Read-Odyssey-Travel-Forum-Webapp" class="custom-button">
+											<i class="fab fa-github"></i> <span>Code</span>
+										</a>
+									</p>
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="grid wow zoomIn">
+							<figure class="effect-bubba">
+								<img src="assets/img/safeNavigator.jpg" />
+								<figcaption>
+									<h2><span>Safe Navigator - Web Browser Concept</span></h2>
+									<p><i>A user-friendly web browser with comprehensive safety and anonymity features.</i>
+										<a href="https://github.com/Mrakheen/Safe-Navigator-Web-Browser" class="custom-button">
+											<i class="fab fa-github"></i> <span>Code</span>
+										</a>
+									</p>
+								</figcaption>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</div><!-- .container -->
+
+		</div>
+	</section>
+
+	<!-- projects end -->
+
+	<!-- skills start -->
+
+	<!--  <section class="darkTheme" id="skills">
+
+		<div class="container">
+
+			<div class="row skills">
+
+				<div class="row">
+
+					<div class="col-sm-6 col-sm-offset-3">
+
+						<div class="pfblock-header wow fadeInUp">
+							<h2 class="pfblock-title">Speaking</h2>
+							<div class="pfblock-line"></div>
+							<div class="pfblock-subtitle">
+								Keynote to my college's endowment providers...
+							</div> 
+						</div>
+
+					</div>
+
+				</div>
+
+					<div class="embed-responsive embed-responsive-16by9"> // class="embed-responsive embed-responsive-16by9"
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/4pmxC57u5-I?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div> 
+			</div>
+
+		</div>
+	</section> -->
+
+	<!-- skills end -->
+
+
+	<!-- articles start -->
+
+	<section id="articles" class="darkTheme">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-sm-6 col-sm-offset-3">
+
+					<div class="pfblock-header wow fadeInUp">
+						<h2 class="pfblock-title myProjects">📝 Writing</h2>
+						<div class="pfblock-line"></div>
+						<div class="pfblock-subtitle">
+							<b>✍🏼 "I love writing about emerging tech and personal growth" </b>
+						</div>
+						<div></div>
+					</div>
+
+				</div>
+
+			</div><!-- .row -->
+
+			<div class="row">
+
+				<div id="cbp-qtrotator" class="cbp-qtrotator">
+					<div class="cbp-qtcontent">
+						<img src="assets/img/keyboard.jpg" alt="From Gaming to Tech: A Journey of Growth" width="350"/>
+						<blockquote>
+							<p>"For me, technology wasn’t something I found in a classroom. I got into it through much more fun and interactive channels."
+								<a href="https://medium.com/@mrakheen10/from-gaming-to-tech-a-journey-of-growth-da21ba04c204" class="myPapers"><b>Read More</b></a>
+							</p>
+							<footer>From Gaming to Tech: A Journey of Growth</footer>
+						</blockquote>
+					</div>
+
+					<div class="cbp-qtcontent">
+						<img src="assets/img/AI-paper.jpg" alt="The AI Economy" width="220" />
+						<blockquote>
+							<p>"AI is not just a fleeting trend; It’s here to stay! It is a technology that is destined to fundamentally reshape industries and daily life."
+								<a href="https://medium.com/@mrakheen10/the-ai-economy-4948cea8a324" class="myPapers"><b>Read More</b></a>
+							</p>
+							<footer>The AI Economy</footer>
+						</blockquote>
+					</div>
+					
+					<div class="cbp-qtcontent">
+						<img src="assets/img/VR.jpg" alt="Will VR Fail Like 3D TVs?" width="200"/>
+						<blockquote>
+							<p>"Ultimately, VR’s success will hinge on overcoming these barriers, particularly the first one — business adoption."
+								<a href="https://medium.com/@mrakheen10/will-vr-fail-like-3d-tvs-e5e3443ea8bb" class="myPapers"><b>Read More</b></a>
+							</p>
+							<footer>Will VR Fail Like 3D TVs?</footer>
+						</blockquote>
+					</div>
+				
+					<div class="cbp-qtcontent">
+						<img src="assets/img/memory_virtual.jpg" alt="Unlocking the Power of Memory Virtualization: Boosting Efficiency in the Cloud Era" width="250"/>
+						<blockquote>
+							<p>"This is where memory virtualization comes into play — a game-changing technology that allows multiple operating systems to efficiently share a computer’s physical memory resources."
+								<a href="https://www.linkedin.com/pulse/dear-content-creator-you-got-60-seconds-impress-me-yasin-ehsan/" class="myPapers"><b>Read More</b></a>
+							</p>
+							<footer>Unlocking the Power of Memory Virtualization: Boosting Efficiency in the Cloud Era</footer>
+						</blockquote>
+					</div>
+				</div>
+				
+
+			</div><!-- .row -->
+
+		</div><!-- .row -->
+
+		<div id="stars-js"></div> <!-- Stars background for the entire website -->
+	</section>
+
+	<!-- article end -->
+
+
+	<!-- Footer start -->
+
+	<footer id="footer">
+
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-12">
+
+					<ul class="social-links">
+						<li><a href="https://github.com/Mrakheen"  data-wow-delay=".1s" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" class="myCode"></i></a></li>
+						<li><a href="https://www.linkedin.com/in/mubtasim-ahmed-rakheen-8077a4203/"  data-wow-delay=".2s" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a></li>
+						<li><a href="https://medium.com/@yasinehsan11"  data-wow-delay=".5s" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a></li>
+						<li><a class="fa fa-envelope mx-2" 
+							href="mailto:mrakheen10@gmail.com" 
+							onclick="setTimeout(function() { alert('My Email:  mrakheen10@gmail.com'); }, 100);"  
+							rel="noopener noreferrer"></a></li>
+					</ul>
+
+					<!-- <p class="heart">
+						Made with <span class="fa fa-heart fa-2x animated pulse"></span> in Nottingham
+					</p> -->
+					<p class="copyright"> © Mubtasim Ahmed Rakheen </p>
+
+				</div>
+
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</footer>
+
+	<!-- Footer end -->
+
+	<!-- Scroll to top -->
+
+	<div class="scroll-up">
+		<a href="#home"><i class="fa fa-angle-up"></i></a>
+	</div>
+
+	<!-- Scroll to top end-->
+
+	<!-- Javascript files -->
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.parallax-1.1.3.js"></script>
+	<script src="assets/js/imagesloaded.pkgd.js"></script>
+	<script src="assets/js/jquery.sticky.js"></script>
+	<script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/jquery.easypiechart.js"></script>
+	<script src="assets/js/waypoints.min.js"></script>
+	<script src="assets/js/jquery.cbpQTRotator.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/roleLoop.js"></script>
+	<script src="assets/js/profile-animation.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	
+	<!-- particles css -->
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<script>
+	  particlesJS.load('particles-js', 'assets/json/particles.json', function() {
+	  console.log('callback - particles.js config loaded');});
+	</script>
+  
+	  <!--navbar -->
+	  <script>
+		  document.addEventListener("DOMContentLoaded", function () {
+			  const sections = document.querySelectorAll("section"); // Ensure you have section elements
+			  const navLinks = document.querySelectorAll(".navbar-custom .navbar-nav > li > a");
+  
+			  function changeActiveLink() {
+				  let index = sections.length;
+  
+				  while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+  
+				  navLinks.forEach((link) => link.classList.remove("active"));
+				  navLinks[index].classList.add("active");
+			  }
+  
+			  // Initial call to set the active link
+			  changeActiveLink();
+  
+			  // Update active link on scroll
+			  window.addEventListener("scroll", changeActiveLink);
+		  });
+	</script>
+
+	<!--Blinking for cursor in roles looping animation-->
+	<script>
+		const cursor = document.getElementById('cursor');
+		let visible = true;
+
+		setInterval(() => {
+		cursor.style.opacity = visible ? '0' : '1';
+		visible = !visible;
+		}, 500); // Adjust the interval time for blinking speed
+	</script>
+
+	
+</body>
+</html>
+
+
+
+
+

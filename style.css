@@ -1,0 +1,1392 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+html {
+	scroll-behavior: smooth;  /* Enable smooth scrolling */
+}
+  
+/* General body styles */
+body {
+	color: #ffffff;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: #E7746F;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #999;
+}
+
+/* Global Reset for Margin and Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and borders are inside the element's width/height */
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: none !important; /* Prevents text from being transformed to uppercase */
+}
+
+/* Home Section */
+#home {
+    background: linear-gradient(180deg, #1b0031 0%, #2d004a 25%, #5e007a 50%, #8e00b8 75%, #bf00ff 100%);
+    background-size: cover;       /* Ensure the background covers the entire section */
+    background-attachment: fixed; /* Makes the background stay in place while scrolling */
+    position: relative;
+    padding: 60px 20px;           /* Adjust the padding for spacing */
+    display: flex;
+    flex-direction: row;          /* Align text and avatar side by side */
+    align-items: center;          /* Vertically center the content */
+    justify-content: center;      /* Center horizontally */
+    gap: 50px;                    /* Spacing between text and avatar */
+    z-index: 1;                   /* Keep the content above the particles */
+    min-height: 100vh;            /* Full viewport height */
+    margin: 0;                    /* Remove any margin */
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;             /* Prevent content overflow */
+}
+
+/*role loop*/
+#role {
+	white-space: nowrap;
+	overflow: hidden;
+}
+#cursor {
+	font-weight: 2000;
+} 
+
+
+/* Particles container */
+#particles-js {
+  position: absolute;          /* Position particles absolutely over the content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;                  /* Layer the particles behind the content */
+  pointer-events: auto;        /* Allow mouse interaction with particles */
+  min-height: 90vh;
+}
+
+.home-main {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Distribute space between text and avatar */
+}
+
+/* Text Container */
+.text-container {
+  max-width: 700px;            /* Constrain the text width */
+  flex: 1;                     /* Allow the text to take up remaining space */
+  text-align: left;            /* Align text to the left */
+  z-index: 2;                  /* Bring text above the particles */
+  margin-top: 60px;           /* Move text upwards */
+  margin-bottom: auto;
+  margin-right: 20px; /* Adjust this value to control the gap */
+}
+
+#avatar-container {
+    height: 490px;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    border-radius: 10px;
+    flex-shrink: 0; /* Prevent the avatar from shrinking */
+    z-index: 10; /* Bring avatar above the particles */
+    margin-top: 12px; /* Move avatar upwards */
+    padding-top: 6px;
+    font-size: large;
+}
+.tooltip {
+    position: absolute;
+    top: -40px; /* Adjust position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00e8d1a2;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 15px;
+    opacity: 0.95;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: bold;
+    visibility: visible;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: bounce 1.5s infinite;
+}
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -24px; /* Arrow positioning */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: #00e8d1a2 transparent transparent transparent;
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+h1 {
+  font-size: 3em;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: 100;
+  color: rgb(255, 255, 255);
+}
+
+/* Hero Title */
+.hero-title {
+  margin: 0;
+  padding: 0;
+  font-size: 3em;              /* Adjust the hero title size */
+  font-weight: bold;
+	text-shadow: 0 0 3px #f9f871; /* Adds a shadow for better visibility */
+}
+
+.gradient-text {
+	color : #00e8d0;
+	background-clip: text;
+	font-family: monospace; /* Monospaced font for code vibe */
+	font-weight: bold; /* Adjust weight as needed */
+}
+  
+
+
+/* ---------------------------------------------- */
+/* Scroll Down 
+/* ---------------------------------------------- */
+
+/* Scroll Down Button */
+.scroll-down {
+    position: absolute;
+    left: 50%;
+    top: calc(100vh - 80px); /* Adjust 80px to set the desired space from the bottom */
+    border: 3px solid #fff;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-left: -25px; /* Center the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    text-align: center;
+    cursor: pointer;
+}
+  
+/* Scroll Down Animation */
+.scroll-down span {
+	color: #fff;
+	font-size: 1.2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: drop 4s ease-in-out infinite;
+	transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for hover effect */
+}
+@keyframes drop {
+	0% { transform: translateY(0); opacity: 0; }
+	50% { transform: translateY(10px); opacity: 1; }
+	100% { transform: translateY(20px); opacity: 0; }
+}
+@-webkit-keyframes drop {
+	0% { top: 0px; opacity: 0; }
+	50% { top: 10px; opacity: 1; }
+	100% { top: 20px; opacity: 0; }
+}
+/* Hover Effect */
+.scroll-down:hover {
+	background-color: rgba(0, 0, 0, 0.616); /* Change background on hover */
+	transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+/* ---------------------------------------------- /*
+ * Transition elements
+/* ---------------------------------------------- */
+
+.navbar a,
+.form-control {
+	transition: all 0.4s ease-in-out; /* Removed vendor prefixes */
+}
+
+a,
+.btn {
+	transition: all 0.2s ease-in-out; /* Adjusted to a slightly longer transition for smoother effect */
+}
+
+
+/* ---------------------------------------------- /*
+ * Reset box-shadow
+/* ---------------------------------------------- */
+
+.btn,
+.form-control,
+.form-control:hover,
+.form-control:focus,
+.navbar-custom .dropdown-menu {
+	-webkit-box-shadow: none;
+			box-shadow: none;
+}
+
+/* ---------------------------------------------- /*
+ * Typography
+/* ---------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+	font: 700 40px/1.2 Raleway, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	margin: 5px 0 5px;
+	color: #ffffff;
+}
+
+h2 {
+	font-size: 30px;
+	margin: 0 0 30px;
+}
+
+h3 {
+	font-size: 13px;
+	letter-spacing: 1px;
+	margin: 0 0 5px;
+}
+
+h4 {
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+
+h5 {
+	font-size: 12px;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+h6 {
+	font-size: 11px;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+/* ---------------------------------------------- /*
+ * Reset border-radius
+/* ---------------------------------------------- */
+
+.btn,
+.iconbox,
+.progress,
+#filter li,
+.scroll-up a,
+.form-control,
+.input-group-addon {
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+		 -o-border-radius: 3px;
+			border-radius: 3px;
+}
+
+
+/* ---------------------------------------------- /*
+ * Input-group
+/* ---------------------------------------------- */
+
+.input-group .form-control {
+	z-index: auto;
+}
+
+.input-group-addon {
+	background: #D8E1E4;
+	border: 2px solid #D8E1E4;
+	padding: 6px 15px;
+	font-weight: 700;
+}
+
+/* ---------------------------------------------- /*
+ * Inputs styles
+/* ---------------------------------------------- */
+
+.form-control {
+	background: #FFF;
+	border: 1px solid #D8E1E4;
+	font-size: 12px;
+	padding: 0 15px;
+}
+
+.form-control:focus{
+    border-color: rgba(135, 135, 135, 0.7);
+}
+
+.input-lg,
+.form-horizontal .form-group-lg .form-control {
+	height: 38px;
+	font-size: 13px;
+}
+
+.input-sm,
+.form-horizontal .form-group-sm .form-control {
+	font-size: 11px;
+	height: 30px;
+}
+
+textarea.form-control {
+	padding: 15px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+/* ---------------------------------------------- /*
+ * Custom button style
+/* ---------------------------------------------- */
+
+.btn {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 13px;
+	padding: 8px 26px;
+	border: 0;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active {
+	outline: inherit !important;
+}
+
+/* Button size */
+
+.btn-lg,
+.btn-group-lg > .btn {
+	padding: 10px 25px;
+	font-size: 13px;
+    background: rgba(17, 17, 17, 0.8);
+    color: #fff;
+}
+.btn-lg:hover,
+.btn-group-lg > .btn:hover{
+    background: rgba(17, 17, 17, 1.8);
+    color: #fff;
+}
+
+.btn-sm,
+.btn-group-sm > .btn {
+	padding: 6px 25px;
+	font-size: 11px;
+}
+
+.btn-xs,
+.btn-group-xs > .btn {
+	padding: 5px 25px;
+	font-size: 10px;
+}
+
+.btn .icon-before {
+	margin-right: 6px;
+}
+
+.btn .icon-after {
+	margin-left: 6px;
+}
+
+
+/* ---------------------------------------------- /*
+ * General Styles
+/* ---------------------------------------------- */
+
+.pfblock-header {
+    text-align: center;
+    margin: 0 0 20px; /* Reduced the bottom margin */
+}
+
+.pfblock {
+    padding: 60px 0 60px; /* Reduced padding to bring elements closer together */
+}
+
+.pfblock-title {
+    font-weight: 800;
+    margin-bottom: 10px; /* Reducing bottom margin if needed */
+}
+
+.pfblock-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px; /* Reduce subtitle margin if too large */
+}
+
+.pfblock-line {
+	background: rgba(255, 255, 255, 0.646);
+	width: 100px;
+	height: 1px;
+	margin: 30px auto;
+}
+
+.pfblock-icon {
+	font-size: 32px;
+}
+.calltoaction *{
+    text-align: center;
+}
+.calltoaction {
+  /* background: url(../img/cubes.jpg); */
+	/* ßbackground-color: #222; */
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+		 -o-background-size: cover;
+			background-size: cover;
+	padding: 50px 0;
+	/* color: #999; */
+}
+
+.calltoaction h2 {
+	font-size: 20px;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+}
+
+.calltoaction-decription{
+    padding-top: 20px;
+    padding-bottom: 30px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.calltoaction-btn {
+	text-align: center;
+}
+
+.calltoaction-btn > .btn {
+    background: rgba(255, 255, 255, .8);
+    color: #111;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.calltoaction-btn > .btn:hover{
+    background: #fff;
+}
+
+.long-down {
+	margin-bottom: 40px;
+}
+
+/* --------------------
+	About Section 
+-----------------------*/
+#about {
+    position: relative;
+    z-index: 1;                  /* Ensure it's above stars-js but below other elements */
+    margin: 0;                   /* Ensure no margin */
+	padding-top: 90px;
+	padding-bottom: 0px;
+}
+
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #bf00ff; /* Change to your desired color */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 50px; /* Circular borders */
+    border: 2px solid #bf00ff; /* Border color */
+    transition: background-color 0.3s, color 0.3s;
+	font-weight: bold;
+}
+
+.custom-button:hover {
+    background-color: #ff5edf; /* Change background on hover */
+    color: #ffffff; /* Change text color on hover */
+}
+
+
+/* Optional: Remove extra spacing from body and html */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;          /* Prevent horizontal scrolling if content overflows */
+}
+
+/* --------------------
+Projects Section 
+------------------------*/
+
+#projects {
+	position: relative;
+	z-index: 1;                  /* Same z-index as the about section to keep them on top */
+	margin: 0;
+	padding-top: 102px;             /* Add padding for spacing */
+	padding-bottom: 0px !important;
+}
+.view-more-btn {
+    text-align: center;
+	font-size: 14px;
+	
+}
+
+/*---------------------
+	Projects Section End
+--------------------------*/
+
+/* Stars */
+#stars-js {
+    position: fixed;        /* Fixes the position relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;            /* Full width of the viewport */
+    height: 100%;           /* Full height of the viewport */
+    z-index: -1;           /* Behind all other content */
+    pointer-events: none;  /* Prevents any mouse events from interacting with this layer */
+    overflow: hidden;      /* Hides anything that goes beyond its bounds */
+    background-size: cover; /* Cover the entire background */
+}
+
+/* Ensure section content is on top of the stars */
+section {
+    position: relative; /* Positions sections in normal flow, allowing z-index to work */
+    z-index: 1; /* Keeps content on top of stars */
+    overflow: visible; /* Ensures content is not clipped, can be omitted if unnecessary */
+}
+
+#biodiv p{
+	font-weight: bold;
+	font-size: 125%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.darkTheme {
+	background-color:#1b0031 ; /* bg */
+	color: #F2F3F4; /* text_primary */
+	position: relative;
+    z-index: 1; /* Ensure content is above the stars background */
+}
+
+.iconbox1, .iconbox2, .iconbox3 {
+    background: #1C1E27; /* Darker background color for better contrast */
+    border: 1px solid #d4d4d4; /* Light border for separation */
+    text-align: center;
+    padding: 20px; /* Reduced padding */
+    margin: 0 0 15px; /* Reduced margin */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+	display: inline-block;
+}
+.iconbox1:hover, .iconbox2:hover, .iconbox3:hover{
+    transform: scale(1.1) !important;
+	transition: transform 0.3s ease !important;
+}
+
+.iconbox-icon {
+    margin: 0 0 10px; /* Reduced margin */
+    font-size: 24px; /* Smaller icon size */
+}
+
+.icon-bulb{
+    color: #f1fa00; /* Orange color for Creating icon */
+}
+
+.icon-puzzle {
+    color: #33c1ff; /* Blue color for Challenges icon */
+}
+
+.icon-user {
+    color: #4cd137; /* Green color for Community icon */
+}
+
+.iconbox-title {
+    margin: 0;
+	margin-bottom:10px;
+    padding: 0;
+    font-size: 16px; /* Smaller font size */
+    color: #F2F3F4; /* Lighter text color */
+}
+
+#profile-picture-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px; /* Adjust the size of the container */
+    height: 300px; /* Maintain the same height and width for a perfect circle */
+    border-radius: 50%;
+    background-color: white; /* Fills empty parts of the frame with white */
+    border: 2px solid #bf00ff; /* Border around the image */
+    position: relative; /* Needed for absolute positioning of the image */
+    overflow: hidden; /* Ensures the image doesn't overflow the container */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adds shadow on hover */
+	perspective: 1000px; /* Perspective for a better 3D effect */
+}
+
+#profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down; /* Ensures the image scales properly within the frame */
+	transition: transform 0.3s ease; /* Smooth transition */
+}
+
+@media (max-width: 640px) {
+    .profile-picture-container {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+#profile-container:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adds shadow on hover */
+}
+
+/* ---------------------------------------------- /*
+ * Skills
+/* ---------------------------------------------- */
+
+.chart {
+    display: inline-block;
+    height: 140px;
+    margin: 50px 0;
+    position: relative;
+    text-align: center;
+    width: 140px;
+}
+.chart canvas {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.percent {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 140px;
+    z-index: 2;
+}
+.percent:after {
+    content: "%";
+    font-size: 50%;
+    margin-left: 0.1em;
+}
+
+/* ---------------------------------------------- /*
+ * Call-to-action + Contact
+/* ---------------------------------------------- */
+
+#gradient{
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+.ajax-response {
+	text-align: center;
+}
+
+/* ---------------------------------------------- 
+ * Footer 
+/* ---------------------------------------------- */
+
+#footer {
+    background: #222;
+    text-align: center;
+    padding: 20px 0; /* Reduced padding for smaller spacing */
+    color: #FFF;
+    font-size: 14px; /* Smaller font size for cleaner look */
+}
+
+.copyright {
+    margin: 10px 0 0; /* Reduce margin to make spacing smaller */
+    font-size: 12px; /* Smaller font size */
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0; /* Reduced margin to condense spacing */
+}
+
+.social-links li {
+    display: inline-block;
+    margin: 0 10px; /* Better spacing between icons */
+}
+
+.social-links a {
+    width: 40px; /* Slightly larger */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Thicker border */
+    border-radius: 50%; /* Circular icons */
+    font-size: 16px; /* Slightly larger icon size */
+    color: rgba(255, 255, 255, 0.6); /* Higher initial visibility */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.social-links a:hover {
+    border-color: rgba(255, 255, 255, 0.5); /* Hover border color */
+    color: #fff; /* Full white on hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+}
+
+#footer span {
+    animation-iteration-count: infinite;
+    color: #ff5252;
+}
+
+
+/* ---------------------------------------------- /*
+ * Navigation
+/* ---------------------------------------------- */
+
+.header {
+	border-bottom: none;
+	position: relative;
+	width: 100%;
+	z-index: 998;
+}
+
+.navbar-custom {
+	border: 0;
+	border-radius: 0;
+	margin: 0;
+	text-transform: uppercase;
+	background-color: #1b0031; /* Dark background color */
+    box-shadow: none; /* Prevent any shadow effect */
+    border-bottom: none; /* Transparent border to prevent flicker */
+	transition: #1b0031 0.4s ease-in-out;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-collapse{
+    font-weight: bolder !important;
+}
+
+.navbar-custom,
+.navbar-custom .dropdown-menu {
+	background: #1b0031; /* Dark background color */
+	padding: 0;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav > li > a,
+.navbar-custom .navbar-nav .dropdown-menu > li > a {
+	font-size: 15px;
+	letter-spacing: 3px;
+	color: #F2F3F4;
+	transition: color 0.2s ease-in-out;
+}
+
+
+/* Active, hover, and focus state for nav links */
+.navbar-custom .navbar-nav > li > a {
+	background: none;
+    outline: 0;
+    border-bottom: none; /* Remove bottom border on hover/focus */
+    box-shadow: none; /* Remove any shadow effect */
+    color: #F2F3F4; /* Default color */
+}
+
+.navbar-custom .navbar-nav > li.active a {
+	background: none;
+    outline: 0;
+    border-bottom: none; /* Remove bottom border on hover/focus */
+    box-shadow: none; /* Remove any shadow effect */
+    color: #bf00ff; /* Purple color for active link */
+}
+
+.navbar-custom .navbar-nav > li a:hover {
+	background: none;
+    outline: 0;
+    border-bottom: none; /* Remove bottom border on hover/focus */
+    box-shadow: none; /* Remove any shadow effect */
+    color: #bf00ff; /* Purple on hover */
+}
+
+
+.navbar-custom .navbar-brand {
+    font-size: 20px;
+    font-weight: bold;
+	color: #F2F3F4; /* Light text color */
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-custom .dropdown-menu {
+	border: 0;
+	border-radius: 0;
+}
+
+.navbar-custom .dropdown-menu > li > a {
+	padding: 10px 20px;
+}
+
+.navbar-custom .nav .open > a,
+.navbar-custom .dropdown-menu > li > a:hover,
+.navbar-custom .dropdown-menu > li > a:focus {
+	background: #f5f5f5;
+}
+
+.navbar-custom .navbar-toggle .icon-bar {
+	background: #222;
+}
+
+
+/* GitHub Profile Button Styling */
+.github-button {
+    border: 2px solid #bf00ff !important;
+    padding: 6px 15px !important;  /* Reduced padding to make the button smaller */
+    border-radius: 20px !important;
+    font-size: 15px !important; /* Reduced font size */
+    font-weight: normal !important;
+    text-transform: uppercase !important;
+    transition: all 0.4s ease-in-out !important;
+    text-decoration: none !important;
+    margin-top: 6px !important;
+    color: #ffffff !important; /* Initial button text color */
+    background-color: transparent !important; /* Ensure the background is transparent initially */
+}
+
+.github-button:hover {
+    background-color: #bf00ff !important; /* Change background to purple on hover */
+    color: #ffffff !important; /* Ensure text turns white on hover */
+}
+
+/* ---------------------------------------------- /*
+ * Scroll to top - Enhanced Look and Feel
+/* ---------------------------------------------- */
+
+.scroll-up {
+	position: fixed;
+	display: none;
+	z-index: 999;
+	bottom: 2em;
+	right: 2em;
+	cursor: pointer;
+}
+
+.scroll-up a {
+	background-color: rgba(52, 58, 64, 0.8); /* Darker, more modern color */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px; /* Increased size for better UX */
+	height: 50px;
+	border-radius: 50%; /* Circle shape */
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+	line-height: 50px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
+	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+}
+
+.scroll-up a:hover,
+.scroll-up a:active {
+	background-color:#bf00ff; /* Add a noticeable hover effect */
+	color: #fff;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Shadow increases on hover */
+}
+
+/* Optional: Add transition when button appears */
+.scroll-up.show {
+	animation: fadeIn 0.5s ease; /* Smooth appearance animation */
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ---------------------------------------------- /*
+ *Scroll Down
+/* ---------------------------------------------- */
+
+.scroll-down {
+	position: absolute;
+	left: 50%;
+	bottom: 40px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	margin-left: -15px;
+	display: block;
+	z-index: 10;
+    text-align: center;
+}
+
+.scroll-down span{
+    position: relative;
+    color: #fff;
+    -webkit-animation-name: drop;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	animation-name: drop;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+
+@-webkit-keyframes drop	{
+	0%   { top:0px;  opacity: 0;}
+	30%  { top:10px; opacity: 1;}
+	100% { top:25px; opacity: 0;}
+}
+
+@keyframes drop	{
+	0%   { top:0px;  opacity: 0;}
+	30%  { top:10px; opacity: 1;}
+	100% { top:25px; opacity: 0;}
+}
+
+/* ---------------------------------------------- /*
+ * Media
+/* ---------------------------------------------- */
+
+@media (max-width: 767px) {
+
+	.calltoaction {
+		text-align: center;
+	}
+
+}
+
+@media (max-width: 480px) {
+
+	h1 {
+		font-size: 34px;
+		letter-spacing: 3px;
+	}
+
+	h2 {
+		font-size: 24px;
+		margin: 0 0 30px;
+		letter-spacing: 3px;
+	}
+
+}
+
+/*--------------------------------*/
+/***** Portfolio Common style *****/
+/*--------------------------------*/
+
+.grid {
+    position: relative;
+    clear: both;
+    margin: auto;
+	margin-bottom: 0px;
+    padding: 2em 0 4em;
+    max-width: 100%;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grid h2 {
+    font-size: 24px;
+    letter-spacing: 0.1em;
+}
+
+.grid figure {
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    width: 300px;
+    height: 350px; /* Adjusted height */
+    background: none; /* Remove background to avoid extension */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grid figure:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+}
+
+.grid figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the figure */
+    opacity: 0.9; /* Soft opacity */
+    transition: opacity 0.4s ease;
+    border-radius: 12px; /* Rounded corners for image */
+}
+
+.grid figure:hover img {
+    opacity: 0.7; /* Slightly fade the image on hover */
+}
+
+.grid figure figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for contrast */
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+    transform: translateY(100%); /* Hidden by default */
+}
+
+.grid figure:hover figcaption {
+    opacity: 1;
+    transform: translateY(0); /* Slide-up effect on hover */
+}
+
+.grid figure figcaption h2 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    transition: transform 0.4s ease;
+}
+
+.grid figure figcaption p {
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 10px 0 0;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px); /* Slide-up text on hover */
+}
+
+.grid figure:hover figcaption p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.grid figure figcaption a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #bf00ff; /* Matches your purple/pink theme */
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.grid figure figcaption a:hover {
+    background: #ff5edf; /* Lighter pink on hover */
+	border: 2px solid #bf00ff;
+}
+
+/*---------------*/
+/***** Bubba Effect *****/
+/*---------------*/
+
+figure.effect-bubba {
+    background: none; /* Remove background to avoid extension */
+}
+
+figure.effect-bubba img {
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+}
+
+figure.effect-bubba:hover img {
+    opacity: 0.5; /* Darkens image slightly on hover */
+}
+
+figure.effect-bubba figcaption::before,
+figure.effect-bubba figcaption::after {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    bottom: 30px;
+    left: 30px;
+    content: '';
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s ease;
+}
+
+figure.effect-bubba figcaption::before {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: scale(0, 1); /* Horizontal lines animation */
+}
+
+figure.effect-bubba figcaption::after {
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    transform: scale(1, 0); /* Vertical lines animation */
+}
+
+figure.effect-bubba h2 {
+    padding-top: 10%;
+    transition: transform 0.4s ease;
+    transform: translateY(-20px);
+    color: #fff;
+}
+
+figure.effect-bubba p {
+    padding: 20px 2.5em;
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s ease;
+    transform: translateY(20px);
+}
+
+figure.effect-bubba:hover h2,
+figure.effect-bubba:hover p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/*-----------------------*/
+/***** Quote Rotator *****/
+/*-----------------------*/
+
+.cbp-qtrotator {
+    position: relative;
+    margin: 3em auto 0 auto;
+    max-width: 90%;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent background */
+    border-radius: 10px;
+    padding: 2em;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+}
+
+.cbp-qtrotator .cbp-qtcontent {
+    position: absolute;
+    min-height: 200px;
+    padding: 2em 0;
+    top: 0;
+    z-index: 0;
+    opacity: 0;
+    width: 100%;
+    transition: opacity 0.8s ease;
+}
+
+.cbp-qtrotator .cbp-qtcontent.cbp-qtcurrent {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.cbp-qtrotator blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.2em;
+    color: #ffffff; /* Light text color */
+}
+
+.cbp-qtrotator blockquote p {
+    font-size: 1.8em;
+    font-weight: 400;
+    color: #f4f4f4; /* Match text color to theme */
+    margin: 0.4em 0 1em;
+    line-height: 1.4em;
+}
+
+.cbp-qtrotator blockquote footer {
+    font-size: 1em;
+    color: #b0b0b0; /* Subtle footer color */
+}
+
+.cbp-qtrotator .cbp-qtcontent img {
+    float: right;
+    margin-left: 3em;
+    border-radius: 8px;
+    opacity: 0.9; /* Slightly transparent image */
+}
+
+/* Progress bar */
+.cbp-qtprogress {
+    position: absolute;
+    background: #bf00ff; /* Accent color for progress */
+    height: 4px;
+    width: 0%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 30.6em) {
+    .cbp-qtrotator {
+        font-size: 70%;
+    }
+
+    .cbp-qtrotator img {
+        width: 80px;
+    }
+}
+
+
+/**Articles Section**/
+#articles{
+	padding-top: 50px !important;
+	padding-bottom: 30px;
+}
+.myPapers {
+    color: #bf00ff; /* Replace with your desired color */
+    text-decoration: none; /* Optional: Removes underline */
+}
+.myPapers:hover, .myPapers:active {
+    color: #FF6F61; /* Optional: Changes color on hover */
+    text-decoration: underline; /* Optional: Adds underline on hover */
+}
+
+/** #skills{
+	padding-top: 80px;
+}**/
+
+/**Quote Generator**/
+#quote {
+	font-family: 'Roboto', sans-serif;          /* Modern font */
+	font-size: 2rem;                          /* Adjust size */
+	font-weight: bold;                           /* Semi-bold for emphasis */
+	color: #fff;                                /* White text */
+	text-align: left;                         /* Center the quote */
+	padding: 20px;                              /* Padding around the quote */
+	background: linear-gradient(135deg, #ffffff, #f9f1ce, #fddaa2); /* Light yellow to golden gradient */
+	background-clip: text;                      /* Clip gradient to text */
+	color: transparent;                         /* Makes the gradient visible */
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);/* Soft shadow for depth */
+	letter-spacing: 1px;                        /* Spacing between letters */
+	line-height: 1.6;                           /* Improve readability */
+	max-width: 80%;                             /* Limit width for readability */
+}
+    
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);              /* Move up slightly */
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);                 /* Normal position */
+	}
+}
+
+
+/**Social Home Page Links**/
+#social {
+	text-align: center; /* Centers all the social links */
+}
+
+.social-links {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 20px;
+}
+
+.social-links li {
+	display: inline-block;
+	margin: 10px;
+}
+
+#social a {
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	line-height: 50px;
+	text-align: center;
+	border: 2px solid rgba(255, 255, 255, .3);
+	border-radius: 50%;
+	font-size: 24px;
+	color: rgba(255, 255, 255, .9);
+	background-color: rgba(0, 0, 0, 0.5); /* Add a subtle background color */
+	transition: all 0.3s ease; /* Smooth transition */
+	text-decoration: none; /* Remove underline */
+}
+
+#social a:hover {
+	border-color: rgba(255, 255, 255, 1); /* Highlight the border */
+	background-color: rgba(0, 174, 237, 0.191); /* Add background color on hover */
+	transform: scale(1.1); /* Slight scaling for emphasis */
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+}
+
+
+
+

@@ -1,0 +1,25 @@
+{
+  "stars": {
+    "number": {
+      "value": 360,
+      "distribution": "sphere",
+      "radius": 1.5
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "size": {
+      "default": 0.004,  
+      "variation": 0.004 
+    },
+    "opacity": {
+      "value": 0.7,
+      "transparent": true,
+      "depthWrite": false
+    },
+    "twinklingSpeed": 0.001, 
+    "camera": {
+      "position": [0, 0, 1]
+    }
+  }
+}
