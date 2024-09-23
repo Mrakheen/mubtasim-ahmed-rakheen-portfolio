@@ -15,6 +15,7 @@ https://mrakheen.github.io/mubtasim-ahmed-rakheen-portfolio/
 - Java Script
 - Bootstrap
 - Three.js
+- Open AI - Chat Gpt - for debugging code errors
 
 ## Aknowledgements
 - Yasin Ehsan Portfolio Repo: https://github.com/YasinEhsan/YasinEhsan.github.io
