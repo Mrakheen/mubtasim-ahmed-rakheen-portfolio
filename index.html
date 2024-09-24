@@ -463,28 +463,32 @@
 	  console.log('callback - particles.js config loaded');});
 	</script>
   
-	  <!--navbar -->
-	  <script>
-		  document.addEventListener("DOMContentLoaded", function () {
-			  const sections = document.querySelectorAll("section"); // Ensure you have section elements
-			  const navLinks = document.querySelectorAll(".navbar-custom .navbar-nav > li > a");
+	 <!--navbar -->
+		<script>
+				document.addEventListener("DOMContentLoaded", function () {
+				const sections = document.querySelectorAll("section"); // Ensure you have section elements
+				const navLinks = document.querySelectorAll(".navbar-custom .navbar-nav > li > a");
+			
+				function changeActiveLink() {
+					let index = sections.length;
+			
+					// Adjust the threshold (scrollY + 30 instead of scrollY + 50 for faster update)
+					while (--index && window.scrollY + 30 < sections[index].offsetTop) {}
+			
+					navLinks.forEach((link) => link.classList.remove("active"));
+					navLinks[index].classList.add("active");
+				}
+			
+				// Call the function frequently for a smoother experience
+				window.addEventListener("scroll", () => {
+					window.requestAnimationFrame(changeActiveLink);
+				});
+			
+				// Initial call to set the active link on page load
+				changeActiveLink();
+				});
+		</script>
   
-			  function changeActiveLink() {
-				  let index = sections.length;
-  
-				  while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-  
-				  navLinks.forEach((link) => link.classList.remove("active"));
-				  navLinks[index].classList.add("active");
-			  }
-  
-			  // Initial call to set the active link
-			  changeActiveLink();
-  
-			  // Update active link on scroll
-			  window.addEventListener("scroll", changeActiveLink);
-		  });
-	</script>
 
 	<!--Blinking for cursor in roles looping animation-->
 	<script>

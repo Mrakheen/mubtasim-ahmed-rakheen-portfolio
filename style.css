@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 
 html {
-	scroll-behavior: smooth;  /* Enable smooth scrolling */
+	scroll-behavior: auto; /* Disables smooth scrolling for instant response */
 }
   
 /* General body styles */
@@ -206,7 +206,7 @@ p {
 	align-items: center;
 	justify-content: center;
 	animation: drop 4s ease-in-out infinite;
-	transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for hover effect */
+	transition: none !important; /* Transition for hover effect */
 }
 @keyframes drop {
 	0% { transform: translateY(0); opacity: 0; }
@@ -231,12 +231,12 @@ p {
 
 .navbar a,
 .form-control {
-	transition: all 0.4s ease-in-out; /* Removed vendor prefixes */
+	transition: all none !important; /* Removed vendor prefixes */
 }
 
 a,
 .btn {
-	transition: all 0.2s ease-in-out; /* Adjusted to a slightly longer transition for smoother effect */
+	transition: all none !important; /* Adjusted to a slightly longer transition for smoother effect */
 }
 
 
@@ -516,7 +516,7 @@ textarea.form-control {
     text-decoration: none; /* Remove underline */
     border-radius: 50px; /* Circular borders */
     border: 2px solid #bf00ff; /* Border color */
-    transition: background-color 0.3s, color 0.3s;
+    transition: none !important;
 	font-weight: bold;
 }
 
@@ -599,7 +599,7 @@ section {
 }
 .iconbox1:hover, .iconbox2:hover, .iconbox3:hover{
     transform: scale(1.1) !important;
-	transition: transform 0.3s ease !important;
+	transition: none !important;
 }
 
 .iconbox-icon {
@@ -646,7 +646,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: scale-down; /* Ensures the image scales properly within the frame */
-	transition: transform 0.3s ease; /* Smooth transition */
+	transition: none !important; /* Smooth transition */
 }
 
 @media (max-width: 640px) {
@@ -664,7 +664,7 @@ section {
  * Skills
 /* ---------------------------------------------- */
 
-.chart {
+/** .chart {
     display: inline-block;
     height: 140px;
     margin: 50px 0;
@@ -688,7 +688,7 @@ section {
     content: "%";
     font-size: 50%;
     margin-left: 0.1em;
-}
+}**/
 
 /* ---------------------------------------------- /*
  * Call-to-action + Contact
@@ -782,7 +782,7 @@ section {
     border-radius: 50%; /* Circular icons */
     font-size: 16px; /* Slightly larger icon size */
     color: rgb(255, 255, 255); /* Higher initial visibility */
-    transition: all 0.3s ease; /* Smooth hover effect */
+    transition: all none !important; /* Smooth hover effect */
 }
 
 .social-links a:hover {
@@ -802,115 +802,116 @@ section {
 /* ---------------------------------------------- */
 
 .header {
-	border-bottom: none;
-	position: relative;
-	width: 100%;
-	z-index: 998;
+    border-bottom: none;
+    position: relative;
+    width: 100%;
+    z-index: 998;
 }
 
 .navbar-custom {
-	border: 0;
-	border-radius: 0;
-	margin: 0;
-	text-transform: uppercase;
-	background-color: #1b0031; /* Dark background color */
-    box-shadow: none; /* Prevent any shadow effect */
-    border-bottom: none; /* Transparent border to prevent flicker */
-	transition: #1b0031 0.4s ease-in-out;
-	font-family: 'Montserrat', sans-serif;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    text-transform: uppercase;
+    background-color: #1b0031;
+    box-shadow: none;
+    border-bottom: none;
+    transition: none !important; /* Faster transition for background */
+    font-family: 'Montserrat', sans-serif;
 }
 
-.navbar-collapse{
+.navbar-collapse {
     font-weight: bolder !important;
 }
 
 .navbar-custom,
 .navbar-custom .dropdown-menu {
-	background: #1b0031; /* Dark background color */
-	padding: 0;
+    background: #1b0031;
+    padding: 0;
 }
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav > li > a,
 .navbar-custom .navbar-nav .dropdown-menu > li > a {
-	font-size: 15px;
-	letter-spacing: 3px;
-	color: #F2F3F4;
-	transition: color 0.2s ease-in-out;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #F2F3F4;
+    transition: none !important; /* Faster color transition */
 }
-
 
 /* Active, hover, and focus state for nav links */
 .navbar-custom .navbar-nav > li > a {
-	background: none;
+    background: none;
     outline: 0;
-    border-bottom: none; /* Remove bottom border on hover/focus */
-    box-shadow: none; /* Remove any shadow effect */
-    color: #F2F3F4; /* Default color */
+    border-bottom: none;
+    box-shadow: none;
+    color: #F2F3F4;
+    transition: none !important; /* Faster transition for color change */
 }
 
 .navbar-custom .navbar-nav > li.active a {
-	background: none;
+    background: none;
     outline: 0;
-    border-bottom: none; /* Remove bottom border on hover/focus */
-    box-shadow: none; /* Remove any shadow effect */
-    color: #bf00ff; /* Purple color for active link */
+    border-bottom: none;
+    box-shadow: none;
+    color: #bf00ff;
+    transition: none !important; /* Faster response on hover */
 }
 
 .navbar-custom .navbar-nav > li a:hover {
-	background: none;
+    background: none;
     outline: 0;
-    border-bottom: none; /* Remove bottom border on hover/focus */
-    box-shadow: none; /* Remove any shadow effect */
-    color: #bf00ff; /* Purple on hover */
+    border-bottom: none;
+    box-shadow: none;
+    color: #bf00ff;
+    transition: none !important; /* Faster response on hover */
 }
-
 
 .navbar-custom .navbar-brand {
     font-size: 20px;
     font-weight: bold;
-	color: #F2F3F4; /* Light text color */
-	font-family: 'Montserrat', sans-serif;
+    color: #F2F3F4;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .navbar-custom .dropdown-menu {
-	border: 0;
-	border-radius: 0;
+    border: 0;
+    border-radius: 0;
 }
 
 .navbar-custom .dropdown-menu > li > a {
-	padding: 10px 20px;
+    padding: 10px 20px;
 }
 
 .navbar-custom .nav .open > a,
 .navbar-custom .dropdown-menu > li > a:hover,
 .navbar-custom .dropdown-menu > li > a:focus {
-	background: #f5f5f5;
+    background: #f5f5f5;
 }
 
 .navbar-custom .navbar-toggle .icon-bar {
-	background: #ffffff;
+    background: #ffffff;
 }
-
 
 /* GitHub Profile Button Styling */
 .github-button {
     border: 2px solid #bf00ff !important;
-    padding: 6px 15px !important;  /* Reduced padding to make the button smaller */
+    padding: 6px 15px !important;
     border-radius: 20px !important;
-    font-size: 15px !important; /* Reduced font size */
+    font-size: 15px !important;
     font-weight: normal !important;
     text-transform: uppercase !important;
-    transition: all 0.4s ease-in-out !important;
+    transition: all none !important; /* Faster transition for GitHub button */
     text-decoration: none !important;
     margin-top: 6px !important;
-    color: #ffffff !important; /* Initial button text color */
-    background-color: transparent !important; /* Ensure the background is transparent initially */
+    color: #ffffff !important;
+    background-color: transparent !important;
 }
 
 .github-button:hover {
-    background-color: #bf00ff !important; /* Change background to purple on hover */
-    color: #ffffff !important; /* Ensure text turns white on hover */
+    background-color: #bf00ff !important;
+    color: #ffffff !important;
+    transition: none !important; /* Faster button hover effect */
 }
 
 /* ---------------------------------------------- /*
@@ -939,7 +940,7 @@ section {
 	font-size: 18px;
 	line-height: 50px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow for depth */
-	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+	transition: none !important; /* Smooth hover transitions */
 }
 
 .scroll-up a:hover,
@@ -1073,7 +1074,7 @@ section {
     cursor: pointer;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: none !important;
 }
 
 .grid figure:hover {
@@ -1086,7 +1087,7 @@ section {
     height: 100%;
     object-fit: cover; /* Ensures the image covers the figure */
     opacity: 0.9; /* Soft opacity */
-    transition: opacity 0.4s ease;
+    transition: none !important;
     border-radius: 12px; /* Rounded corners for image */
 }
 
@@ -1104,7 +1105,7 @@ section {
     text-transform: uppercase;
     font-size: 1.25em;
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: none !important;
     border-radius: 0 0 12px 12px; /* Rounded bottom corners */
     transform: translateY(100%); /* Hidden by default */
 }
@@ -1121,7 +1122,7 @@ section {
     font-size: 22px;
     font-weight: bold;
     color: #fff;
-    transition: transform 0.4s ease;
+    transition: none !important;
 }
 
 .grid figure figcaption p {
@@ -1129,7 +1130,7 @@ section {
     letter-spacing: 1px;
     margin: 10px 0 0;
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: none !important;
     transform: translateY(20px); /* Slide-up text on hover */
 }
 
@@ -1147,7 +1148,7 @@ section {
     text-decoration: none;
     font-weight: bold;
     border-radius: 20px;
-    transition: background-color 0.3s ease;
+    transition: none !important;
 }
 
 .grid figure figcaption a:hover {
@@ -1165,7 +1166,7 @@ figure.effect-bubba {
 
 figure.effect-bubba img {
     opacity: 0.8;
-    transition: opacity 0.4s ease;
+    transition: none !important;
 }
 
 figure.effect-bubba:hover img {
@@ -1181,7 +1182,7 @@ figure.effect-bubba figcaption::after {
     left: 30px;
     content: '';
     opacity: 0;
-    transition: opacity 0.4s, transform 0.4s ease;
+    transition: none !important;
 }
 
 figure.effect-bubba figcaption::before {
@@ -1198,7 +1199,7 @@ figure.effect-bubba figcaption::after {
 
 figure.effect-bubba h2 {
     padding-top: 10%;
-    transition: transform 0.4s ease;
+    transition: none !important;
     transform: translateY(-20px);
     color: #fff;
 }
@@ -1206,7 +1207,7 @@ figure.effect-bubba h2 {
 figure.effect-bubba p {
     padding: 20px 2.5em;
     opacity: 0;
-    transition: opacity 0.4s, transform 0.4s ease;
+    transition: none !important;
     transform: translateY(20px);
 }
 
@@ -1240,7 +1241,7 @@ figure.effect-bubba:hover p {
     z-index: 0;
     opacity: 0;
     width: 100%;
-    transition: opacity 0.8s ease;
+    transition: none !important;
 }
 
 .cbp-qtrotator .cbp-qtcontent.cbp-qtcurrent {
@@ -1302,7 +1303,7 @@ figure.effect-bubba:hover p {
 
 /**Articles Section**/
 #articles{
-	padding-top: 50px !important;
+	padding-top: 50px ;
 	padding-bottom: 30px;
 }
 .myPapers {
@@ -1374,7 +1375,7 @@ figure.effect-bubba:hover p {
 	font-size: 24px;
 	color: rgba(255, 255, 255, .9);
 	background-color: rgba(0, 0, 0, 0.5); /* Add a subtle background color */
-	transition: all 0.3s ease; /* Smooth transition */
+	transition: none !important; /* Smooth transition */
 	text-decoration: none; /* Remove underline */
 }
 
