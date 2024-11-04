@@ -1,7 +1,7 @@
 const roles = [
     "Full Stack Developer",
     "Android Developer",
-    "Cross-Platform  Developer",
+    "Cross-Platform Developer",
     "UI/UX Designer",
     "Programmer"
   ];
