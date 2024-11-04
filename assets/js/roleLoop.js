@@ -1,9 +1,9 @@
 const roles = [
     "Full Stack Developer",
-    "Android Developer",
+    "Mobile Developer",
     "Cross-Platform Developer",
     "UI/UX Designer",
-    "Programmer"
+    "Cloud Engineer"
   ];
   
   let currentRoleIndex = 0;
