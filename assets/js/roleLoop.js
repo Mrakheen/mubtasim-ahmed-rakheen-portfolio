@@ -1,7 +1,6 @@
 const roles = [
     "Full Stack Developer",
     "Mobile Developer",
-    "Cross-Platform Developer",
     "UI/UX Designer",
     "Cloud Engineer"
   ];
