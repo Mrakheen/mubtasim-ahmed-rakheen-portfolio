@@ -1,8 +1,8 @@
 const roles = [
-    "Full Stack Developer",
-    "Mobile Developer",
-    "UI/UX Designer",
-    "Cloud Engineer"
+    "Full Stack Development",
+    "Mobile Development",
+    "UI/UX Design",
+    "Cloud Services"
   ];
   
   let currentRoleIndex = 0;
@@ -42,3 +42,4 @@ const roles = [
   document.addEventListener('DOMContentLoaded', typeRole);
 
   
+
