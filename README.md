@@ -3,8 +3,6 @@
 ## Hosted with Github Pages:  
 https://mrakheen.github.io/mubtasim-ahmed-rakheen-portfolio/
 
-![image](https://github.com/user-attachments/assets/650d1a6e-9eaf-441a-b2f2-4c1048524b47)
-
 ![image](https://github.com/user-attachments/assets/9afcc24c-db32-4d27-b9c6-892d81926cdb)
 
 ## Useful Links
