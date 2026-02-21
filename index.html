@@ -425,7 +425,14 @@
 					<!-- <p class="heart">
 						Made with <span class="fa fa-heart fa-2x animated pulse"></span> in Nottingham
 					</p> -->
-					<p class="copyright"> © Mubtasim Ahmed Rakheen </p>
+					<p class="copyright"> 
+						<footer>
+						  <small>&copy; <span id="year"></span> Mubtasim Ahmed Rakheen. All rights reserved.</small>
+						</footer>
+						<script>
+						  document.getElementById("year").textContent = new Date().getFullYear();
+						</script> 
+					</p>
 
 				</div>
 
@@ -508,6 +515,7 @@
 	
 </body>
 </html>
+
 
 
 
