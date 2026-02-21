@@ -6,18 +6,38 @@ window.onload = () => loadModel();
 
 function loadModel() {
   const loader = new GLTFLoader();
-  loader.load('avatar.glb',
+  const loadingEl = document.getElementById('avatar-loading');
+
+  loader.load(
+    'avatar.glb',
+
+    //  On Success
     (gltf) => {
       setupScene(gltf);
-      document.getElementById('avatar-loading').style.display = 'none';
-    }, 
+
+      if (loadingEl) {
+        loadingEl.style.opacity = '0';
+        setTimeout(() => {
+          loadingEl.style.display = 'none';
+        }, 300);
+      }
+    },
+
+    //  On Progress
     (xhr) => {
-      const percentCompletion = Math.round((xhr.loaded / xhr.total) * 100);
-      document.getElementById('avatar-loading').innerText = `LOADING... ${percentCompletion}%`
-      console.log(`Loading model... ${percentCompletion}%`);
-    }, 
+      if (loadingEl && xhr.total) {
+        const percent = Math.round((xhr.loaded / xhr.total) * 100);
+        loadingEl.textContent = `LOADING... ${percent}%`;
+      }
+    },
+
+    //  On Error
     (error) => {
-      console.log(error);
+      console.error("Error loading avatar:", error);
+
+      if (loadingEl) {
+        loadingEl.textContent = "Failed to load avatar.";
+      }
     }
   );
 }
@@ -174,6 +194,7 @@ function setupScene(gltf) {
     animate();
     standing_greetingAction.play();
 }
+
 
 
 
