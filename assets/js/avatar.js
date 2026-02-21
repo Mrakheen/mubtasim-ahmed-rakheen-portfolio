@@ -6,38 +6,23 @@ window.onload = () => loadModel();
 
 function loadModel() {
   const loader = new GLTFLoader();
-  const loadingEl = document.getElementById('avatar-loading');
 
-  loader.load(
-    'avatar.glb',
-
-    //  On Success
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('/draco/'); // path to decoder files
+  loader.setDRACOLoader(dracoLoader);
+  
+  loader.load('avatar.glb',
     (gltf) => {
       setupScene(gltf);
-
-      if (loadingEl) {
-        loadingEl.style.opacity = '0';
-        setTimeout(() => {
-          loadingEl.style.display = 'none';
-        }, 300);
-      }
-    },
-
-    //  On Progress
+      document.getElementById('avatar-loading').style.display = 'none';
+    }, 
     (xhr) => {
-      if (loadingEl && xhr.total) {
-        const percent = Math.round((xhr.loaded / xhr.total) * 100);
-        loadingEl.textContent = `LOADING... ${percent}%`;
-      }
-    },
-
-    //  On Error
+      const percentCompletion = Math.round((xhr.loaded / xhr.total) * 100);
+      document.getElementById('avatar-loading').innerText = `LOADING... ${percentCompletion}%`
+      console.log(`Loading model... ${percentCompletion}%`);
+    }, 
     (error) => {
-      console.error("Error loading avatar:", error);
-
-      if (loadingEl) {
-        loadingEl.textContent = "Failed to load avatar.";
-      }
+      console.log(error);
     }
   );
 }
@@ -194,6 +179,7 @@ function setupScene(gltf) {
     animate();
     standing_greetingAction.play();
 }
+
 
 
 
