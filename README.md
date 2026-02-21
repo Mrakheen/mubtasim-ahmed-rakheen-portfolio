@@ -1,7 +1,7 @@
 # my-portfolio-website
 ------------------------
 ## Hosted with Github Pages:  
-[https://mrakheen.github.io/mubtasim-ahmed-rakheen-portfolio/](https://mrakheen.github.io/mubtasim-ahmed-rakheen-personal-website/)
+[https://mrakheen.github.io/mubtasim-ahmed-rakheen-personal-website/](https://mrakheen.github.io/mubtasim-ahmed-rakheen-personal-website/)
 
 <img width="3419" height="1933" alt="image" src="https://github.com/user-attachments/assets/e3684cfa-141f-46f1-b79a-7dc6d08f001c" />
 
