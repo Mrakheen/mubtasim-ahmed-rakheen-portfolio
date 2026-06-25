@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Milky Way Starfield</title>
-    <style>
-        body { margin: 0; overflow: hidden; background: #000; }
-        #stars-js { width: 100vw; height: 100vh; }
-    </style>
-</head>
-<body>
-    <div id="stars-js"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script>
-        function loadStars(divId, jsonUrl = null) {
+function loadStars(divId, jsonUrl = null) {
             // Default config for Milky Way look
             const config = jsonUrl ? {} : {
                 stars: {
@@ -207,11 +192,3 @@
                 i++;
             }
         }
-
-        // Initialize
-        loadStars('stars-js');
-    </script>
-</body>
-</html>
-
-
