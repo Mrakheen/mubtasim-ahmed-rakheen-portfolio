@@ -192,3 +192,6 @@ function loadStars(divId, jsonUrl = null) {
                 i++;
             }
         }
+
+            // Initialize
+        loadStars('stars-js');
