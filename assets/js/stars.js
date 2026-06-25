@@ -1,85 +1,62 @@
-// assets/js/stars.js - Fixed Milky Way Starfield
+// assets/js/stars.js
 let THREE;
 
-async function initThree() {
-    // Try to use imported Three.js first, fallback to global
-    if (typeof window.THREE !== 'undefined') {
-        THREE = window.THREE;
-    } else {
-        try {
-            const module = await import('three');
-            THREE = module.default || module;
-        } catch (e) {
-            console.error("Three.js not loaded", e);
-            return;
-        }
+async function initStarfield() {
+    // Use global THREE from your HTML script
+    if (typeof window.THREE === 'undefined') {
+        console.error("Three.js not loaded");
+        return;
     }
-    startStarfield();
-}
+    THREE = window.THREE;
 
-function startStarfield() {
     const container = document.getElementById('stars-js');
     if (!container) {
-        console.error("stars-js container not found");
+        console.error("#stars-js not found");
         return;
     }
 
-    // Clear any previous content
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear previous
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+    
     const renderer = new THREE.WebGLRenderer({ 
         alpha: true, 
-        antialias: true,
-        preserveDrawingBuffer: true 
+        antialias: true 
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Make sure container is behind everything
-    container.style.position = 'fixed';
-    container.style.top = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '100%';
-    container.style.zIndex = '-1';
-    container.style.pointerEvents = 'none';
-
-    // Deep space background
-    const bg = new THREE.Mesh(
+    // Deep space
+    scene.add(new THREE.Mesh(
         new THREE.SphereGeometry(900, 64, 64),
-        new THREE.MeshBasicMaterial({ 
-            color: 0x0a001f, 
-            side: THREE.BackSide 
-        })
-    );
-    scene.add(bg);
+        new THREE.MeshBasicMaterial({ color: 0x0a001f, side: THREE.BackSide })
+    ));
 
     // Star texture
-    const starTexture = new THREE.TextureLoader().load(
+    const texture = new THREE.TextureLoader().load(
         'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/sprites/spark1.png'
     );
 
-    const numStars = 1200;
+    const numStars = 1500;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(numStars * 3);
     const colors = new Float32Array(numStars * 3);
     const sizes = new Float32Array(numStars);
 
-    generateMilkyWayStars(positions, colors, sizes, numStars, 1.8);
+    generateMilkyWayStars(positions, colors, sizes, numStars, 1.9);
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
     const material = new THREE.PointsMaterial({
-        size: 0.005,
-        map: starTexture,
+        size: 0.006,
+        map: texture,
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.9,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
         vertexColors: true,
@@ -89,7 +66,7 @@ function startStarfield() {
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
-    camera.position.set(0, 0, 1.2);
+    camera.position.z = 1.3;
 
     let time = 0;
 
@@ -97,27 +74,28 @@ function startStarfield() {
         requestAnimationFrame(animate);
         time += 0.016;
 
-        const posArray = points.geometry.attributes.position.array;
-        const sizeArray = points.geometry.attributes.size.array;
+        const pos = points.geometry.attributes.position.array;
+        const size = points.geometry.attributes.size.array;
 
         for (let i = 0; i < numStars; i++) {
-            const phase = i * 0.7 + time * 1.8;
-            sizeArray[i] = 0.005 + Math.sin(phase) * 0.003 * (0.7 + Math.random() * 0.6);
+            // Twinkling
+            size[i] = 0.006 + Math.sin(i * 0.8 + time * 2.2) * 0.0035;
 
-            // Gentle rotation
+            // Slow rotation
             const idx = i * 3;
-            const x = posArray[idx];
-            const z = posArray[idx + 2];
-            const rot = 0.00008;
-            posArray[idx]     = x * Math.cos(rot) - z * Math.sin(rot);
-            posArray[idx + 2] = x * Math.sin(rot) + z * Math.cos(rot);
+            const x = pos[idx];
+            const z = pos[idx + 2];
+            const rot = 0.0001;
+            pos[idx]     = x * Math.cos(rot) - z * Math.sin(rot);
+            pos[idx + 2] = x * Math.sin(rot) + z * Math.cos(rot);
         }
 
         points.geometry.attributes.size.needsUpdate = true;
         points.geometry.attributes.position.needsUpdate = true;
 
-        camera.position.x = Math.sin(time * 0.07) * 0.03;
-        camera.position.y = Math.cos(time * 0.05) * 0.02;
+        // Gentle camera movement
+        camera.position.x = Math.sin(time * 0.06) * 0.04;
+        camera.position.y = Math.cos(time * 0.045) * 0.025;
         camera.lookAt(0, 0, 0);
 
         renderer.render(scene, camera);
@@ -125,6 +103,7 @@ function startStarfield() {
 
     animate();
 
+    // Resize
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
@@ -134,26 +113,26 @@ function startStarfield() {
 
 function generateMilkyWayStars(positions, colors, sizes, count, radius) {
     for (let i = 0; i < count; i++) {
-        const angle = Math.random() * Math.PI * 2 * 3.8;
-        const r = radius * Math.pow(Math.random(), 0.62);
-        const spiral = Math.sin(angle * 3) * (radius * 0.2);
+        const angle = Math.random() * Math.PI * 2 * 4;
+        const r = radius * Math.pow(Math.random(), 0.6);
+        const spiral = Math.sin(angle * 3.2) * (radius * 0.22);
 
-        positions[i * 3]     = Math.cos(angle) * (r + spiral);
-        positions[i * 3 + 1] = (Math.random() - 0.5) * radius * 0.45;
-        positions[i * 3 + 2] = Math.sin(angle) * (r + spiral);
+        positions[i*3]   = Math.cos(angle) * (r + spiral);
+        positions[i*3+1] = (Math.random() - 0.5) * radius * 0.5;
+        positions[i*3+2] = Math.sin(angle) * (r + spiral);
 
-        const warmth = Math.random();
-        colors[i * 3]     = 0.96 + warmth * 0.04;
-        colors[i * 3 + 1] = 0.9 + warmth * 0.1;
-        colors[i * 3 + 2] = 1.0;
+        const w = Math.random();
+        colors[i*3]   = 0.95 + w * 0.05;
+        colors[i*3+1] = 0.88 + w * 0.12;
+        colors[i*3+2] = 1.0;
 
-        sizes[i] = 0.7 + Math.random() * 2.1;
+        sizes[i] = 0.8 + Math.random() * 2.2;
     }
 }
 
-// Start after everything is loaded
+// Auto start
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThree);
+    document.addEventListener('DOMContentLoaded', initStarfield);
 } else {
-    initThree();
+    initStarfield();
 }
