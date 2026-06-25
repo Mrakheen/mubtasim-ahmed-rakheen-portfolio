@@ -78,4 +78,4 @@ function randomInSphere(positions, radius) {
     }
     return positions;
 }
-loadStars('stars-js', 'assets/json/stars.json'); update star.js whiout needing to update style.css html or anything else
+loadStars('stars-js', 'assets/json/stars.json'); 
