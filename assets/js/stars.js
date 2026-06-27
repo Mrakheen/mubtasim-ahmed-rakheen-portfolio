@@ -14,51 +14,55 @@ import * as THREE from 'three';
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(
-    60,
+    65,
     window.innerWidth / window.innerHeight,
     0.1,
-    200
+    300
   );
 
-  camera.position.set(0, 0, 5);
+  camera.position.set(0, 0, 8);
 
-  // ── Shader ───────────────────────────────────────────────────────────
+  // ── Mouse flight controls ────────────────────────────────────────────
+  let mouseX = 0, mouseY = 0;
+  let targetX = 0, targetY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+
+  // ── Star shader ───────────────────────────────────────────────────────
   const VERT = `
     attribute float aSize;
-    attribute float aPhase;
     attribute vec3 aColor;
-    attribute float aDepth;
+    attribute float aCluster;
 
     varying vec3 vColor;
-    varying float vDepth;
-    varying float vPhase;
+    varying float vCluster;
 
     uniform float uTime;
 
     void main() {
       vColor = aColor;
-      vDepth = aDepth;
-      vPhase = aPhase;
+      vCluster = aCluster;
 
-      vec3 pos = position;
+      vec3 p = position;
 
-      // subtle drift based on depth (parallax illusion)
-      pos.x += sin(uTime * 0.05 + aPhase) * aDepth * 0.02;
-      pos.y += cos(uTime * 0.04 + aPhase) * aDepth * 0.02;
+      // slight cluster breathing motion
+      p += sin(uTime * 0.2 + aCluster * 10.0) * 0.02;
 
-      vec4 mvPos = modelViewMatrix * vec4(pos, 1.0);
+      vec4 mv = modelViewMatrix * vec4(p, 1.0);
 
-      float dist = length(mvPos.xyz);
-      float twinkle = 0.7 + 0.3 * sin(uTime * 1.2 + aPhase);
+      float dist = length(mv.xyz);
+      gl_PointSize = (aSize / dist) * 220.0;
 
-      gl_PointSize = (aSize / dist) * twinkle * 240.0;
-      gl_Position = projectionMatrix * mvPos;
+      gl_Position = projectionMatrix * mv;
     }
   `;
 
   const FRAG = `
     varying vec3 vColor;
-    varying float vDepth;
+    varying float vCluster;
 
     void main() {
       vec2 uv = gl_PointCoord - 0.5;
@@ -66,14 +70,15 @@ import * as THREE from 'three';
 
       if (d > 0.5) discard;
 
-      float alpha = exp(-d * d * 10.0);
+      float alpha = exp(-d * d * 12.0);
+
       gl_FragColor = vec4(vColor, alpha);
     }
   `;
 
-  function makeMat(uTime) {
+  function mat() {
     return new THREE.ShaderMaterial({
-      uniforms: { uTime },
+      uniforms: { uTime: { value: 0 } },
       vertexShader: VERT,
       fragmentShader: FRAG,
       transparent: true,
@@ -82,126 +87,156 @@ import * as THREE from 'three';
     });
   }
 
-  // ── Star field (infinite volume) ─────────────────────────────────────
-  const STAR_COUNT = 1400;
-  const RANGE = 60;
+  // ── Galaxy clusters (travel targets) ─────────────────────────────────
+  const STAR_COUNT = 2000;
 
   const positions = new Float32Array(STAR_COUNT * 3);
   const colors = new Float32Array(STAR_COUNT * 3);
   const sizes = new Float32Array(STAR_COUNT);
-  const phases = new Float32Array(STAR_COUNT);
-  const depth = new Float32Array(STAR_COUNT);
+  const cluster = new Float32Array(STAR_COUNT);
 
-  const WHITE = () => [0.95, 0.95, 1.0];
-  const BLUE = () => [0.6, 0.75, 1.0];
-  const WARM = () => [1.0, 0.9, 0.7];
+  function randColor() {
+    const t = Math.random();
+    if (t < 0.5) return [0.9, 0.9, 1.0];
+    if (t < 0.8) return [0.6, 0.8, 1.0];
+    return [1.0, 0.85, 0.7];
+  }
 
-  function randSpread() {
-    return (Math.random() - 0.5) * RANGE;
+  // 6 galaxy clusters in space
+  const clusters = Array.from({ length: 6 }, () => ({
+    x: (Math.random() - 0.5) * 80,
+    y: (Math.random() - 0.5) * 40,
+    z: (Math.random() - 0.5) * 80,
+    radius: 8 + Math.random() * 12,
+  }));
+
+  function pickCluster() {
+    return clusters[Math.floor(Math.random() * clusters.length)];
   }
 
   for (let i = 0; i < STAR_COUNT; i++) {
-    positions[i * 3] = randSpread();
-    positions[i * 3 + 1] = randSpread();
-    positions[i * 3 + 2] = randSpread();
+    const c = pickCluster();
 
-    const c = Math.random() < 0.6 ? WHITE() : Math.random() < 0.8 ? BLUE() : WARM();
+    const angle = Math.random() * Math.PI * 2;
+    const radius = Math.random() * c.radius;
 
-    colors[i * 3] = c[0];
-    colors[i * 3 + 1] = c[1];
-    colors[i * 3 + 2] = c[2];
+    const x = c.x + Math.cos(angle) * radius;
+    const y = c.y + (Math.random() - 0.5) * radius;
+    const z = c.z + Math.sin(angle) * radius;
 
-    sizes[i] = 0.008 + Math.random() * 0.02;
-    phases[i] = Math.random() * Math.PI * 2;
-    depth[i] = Math.random();
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
+
+    const col = randColor();
+    colors[i * 3] = col[0];
+    colors[i * 3 + 1] = col[1];
+    colors[i * 3 + 2] = col[2];
+
+    sizes[i] = 0.01 + Math.random() * 0.03;
+    cluster[i] = Math.random();
   }
 
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geo.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
   geo.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
-  geo.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1));
-  geo.setAttribute('aDepth', new THREE.BufferAttribute(depth, 1));
+  geo.setAttribute('aCluster', new THREE.BufferAttribute(cluster, 1));
 
-  const uTime = { value: 0 };
-  const mat = makeMat(uTime);
-
-  const stars = new THREE.Points(geo, mat);
+  const stars = new THREE.Points(geo, mat());
   scene.add(stars);
 
-  // ── Shooting stars system ────────────────────────────────────────────
-  const shootGeo = new THREE.BufferGeometry();
-  const shootPositions = new Float32Array(6); // line
-  shootGeo.setAttribute('position', new THREE.BufferAttribute(shootPositions, 3));
+  // ── Nebula fog layers ────────────────────────────────────────────────
+  const fogs = [];
 
-  const shootMat = new THREE.LineBasicMaterial({
-    color: 0xffffff,
-    transparent: true,
-    opacity: 0.0,
-  });
+  function createNebula(color, x, y, z) {
+    const geo = new THREE.SphereGeometry(10 + Math.random() * 15, 16, 16);
 
-  const shootingStar = new THREE.Line(shootGeo, shootMat);
-  scene.add(shootingStar);
+    const mat = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.05,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      side: THREE.DoubleSide,
+    });
 
-  let shootTimer = 0;
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(x, y, z);
 
-  function spawnShoot() {
-    const x = (Math.random() - 0.5) * 40;
-    const y = (Math.random() - 0.5) * 20;
-    const z = (Math.random() - 0.5) * 20;
-
-    shootPositions.set([x, y, z, x + 2, y - 1, z - 2]);
-
-    shootGeo.attributes.position.needsUpdate = true;
-
-    shootMat.opacity = 1.0;
+    scene.add(mesh);
+    fogs.push(mesh);
   }
 
-  // ── Camera motion (cinematic drift) ──────────────────────────────────
+  for (let i = 0; i < 6; i++) {
+    createNebula(
+      new THREE.Color(`hsl(${200 + Math.random() * 80}, 70%, 60%)`),
+      (Math.random() - 0.5) * 80,
+      (Math.random() - 0.5) * 40,
+      (Math.random() - 0.5) * 80
+    );
+  }
+
+  // ── Camera physics (flight sim feel) ─────────────────────────────────
   const clock = new THREE.Clock();
+
+  let velX = 0, velY = 0;
 
   function animate() {
     requestAnimationFrame(animate);
 
     const t = clock.getElapsedTime();
-    uTime.value = t;
 
-    // slow forward drift (illusion of travel)
-    camera.position.z -= 0.01;
+    // smooth mouse steering
+    targetX = mouseX * 2;
+    targetY = mouseY * 2;
 
-    // wrap camera so it feels infinite
-    if (camera.position.z < -20) camera.position.z = 5;
+    velX += (targetX - velX) * 0.02;
+    velY += (targetY - velY) * 0.02;
 
-    // subtle camera sway
-    camera.position.x = Math.sin(t * 0.1) * 0.5;
-    camera.position.y = Math.cos(t * 0.08) * 0.3;
+    camera.position.x += velX * 0.1;
+    camera.position.y += velY * 0.1;
 
-    camera.lookAt(0, 0, camera.position.z - 5);
+    camera.position.z -= 0.05; // forward travel
 
-    // recycle stars around camera (infinite field)
+    // wrap space
+    if (camera.position.z < -80) camera.position.z = 8;
+
+    camera.lookAt(
+      camera.position.x,
+      camera.position.y,
+      camera.position.z - 10
+    );
+
+    // nebula drift
+    fogs.forEach((f, i) => {
+      f.rotation.x += 0.0005;
+      f.rotation.y += 0.0003;
+      f.material.opacity = 0.03 + Math.sin(t + i) * 0.01;
+    });
+
+    // cluster lensing effect (fake gravity distortion)
     const pos = geo.attributes.position.array;
 
     for (let i = 0; i < STAR_COUNT; i++) {
       const ix = i * 3;
 
-      if (pos[ix + 2] > camera.position.z + 10) {
-        pos[ix] = (Math.random() - 0.5) * RANGE;
-        pos[ix + 1] = (Math.random() - 0.5) * RANGE;
-        pos[ix + 2] = camera.position.z - RANGE;
+      const dx = pos[ix] - camera.position.x;
+      const dy = pos[ix + 1] - camera.position.y;
+      const dz = pos[ix + 2] - camera.position.z;
+
+      const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+      if (dist < 12) {
+        const force = (12 - dist) * 0.002;
+        pos[ix] += dx * force;
+        pos[ix + 1] += dy * force;
       }
     }
 
     geo.attributes.position.needsUpdate = true;
 
-    // shooting stars
-    shootTimer += 1;
-
-    if (shootTimer > 120 + Math.random() * 200) {
-      spawnShoot();
-      shootTimer = 0;
-    }
-
-    shootMat.opacity *= 0.92;
+    stars.material.uniforms.uTime.value = t;
 
     renderer.render(scene, camera);
   }
